@@ -11,6 +11,7 @@
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
+    "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.0",
     "typescript": "^3.6.2"
   },
@@ -39,6 +40,7 @@
     "@types/react-router-dom": "^4.3.5",
     "prettier": "^1.18.2",
     "tslint": "^5.19.0",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.0.0"
   }
 }

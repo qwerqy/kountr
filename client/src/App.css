@@ -31,3 +31,18 @@
     transform: rotate(360deg);
   }
 }
+
+.Index-container-card {
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Index-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
