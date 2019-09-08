@@ -9,6 +9,7 @@ ReactDOM.render(
   <BrowserRouter>
     <App />
   </BrowserRouter>,
+  // tslint:disable-next-line: trailing-comma
   document.getElementById('root')
 );
 
