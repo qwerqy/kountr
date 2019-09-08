@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Segment,
   Container,
@@ -9,9 +9,38 @@ import {
   Icon,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import shortid from 'shortid';
+import firebase from '../firebase';
 
-const Host = (props: any) => {
+const Host: React.SFC<any> = (props: any): JSX.Element => {
   const [kountrName, setKountrName] = useState('');
+  // const [kid, setKid] = useState('');
+
+  const writeKountrData = (id: string, name: string): void => {
+    firebase.database
+      .ref(`kountrs/${id}`)
+      .child('data')
+      .set({
+        id,
+        name,
+        count: 0,
+      })
+      .catch(err => {
+        console.log('Error writing:', err);
+      });
+  };
+
+  const handleSubmit = (): void => {
+    if (kountrName) {
+      const kid = shortid.generate();
+      if (kid) {
+        writeKountrData(kid, kountrName);
+      }
+    } else {
+      // TODO: Create error response
+    }
+  };
+
   return (
     <Segment
       vertical={true}
@@ -43,12 +72,18 @@ const Host = (props: any) => {
                     What's the name of the Kountr you'd like to host?
                   </Header>
                 </label>
-                <input onChange={e => setKountrName(e.target.value)} />
+                <input
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
+                    setKountrName(e.target.value)
+                  }
+                />
               </Form.Field>
             </Form>
             <Divider hidden={true} />
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <Button size="huge">Host {kountrName} Kountr</Button>
+              <Button size="huge" onClick={handleSubmit}>
+                Host {kountrName} Kountr
+              </Button>
             </div>
           </Container>
         </Segment>
