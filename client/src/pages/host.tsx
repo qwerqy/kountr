@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import {
   Segment,
   Container,
@@ -7,13 +7,21 @@ import {
   Form,
   Button,
   Icon,
+  Input,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import shortid from 'shortid';
 import firebase from '../firebase';
 
 const Host: React.SFC<any> = (props: any): JSX.Element => {
+  const nameRef = createRef<HTMLInputElement>();
   const [kountrName, setKountrName] = useState('');
+
+  useEffect(() => {
+    if (nameRef.current) {
+      nameRef.current.focus();
+    }
+  }, [nameRef]);
 
   const writeKountrData = (id: string, name: string): void => {
     firebase.database
@@ -79,7 +87,10 @@ const Host: React.SFC<any> = (props: any): JSX.Element => {
                       What's the name of the Kountr you'd like to host?
                     </Header>
                   </label>
+                  <Divider hidden={true} />
                   <input
+                    ref={nameRef}
+                    style={{ textAlign: 'center' }}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
                       setKountrName(e.target.value)
                     }

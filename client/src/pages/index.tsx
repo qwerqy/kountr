@@ -25,14 +25,26 @@ const Index = (props: any) => {
             </Header>
             <Divider />
             <Grid columns={1}>
-              <Grid.Column>
+              <Grid.Column
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
                 <Link to="/host">
                   <Card centered={true} className={'Index-container-card'}>
                     <Header as="h2">Host</Header>
                   </Card>
                 </Link>
               </Grid.Column>
-              <Grid.Column>
+              <Grid.Column
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
                 <Link to="/participate">
                   <Card centered={true} className={'Index-container-card'}>
                     <Header as="h2">Participate</Header>

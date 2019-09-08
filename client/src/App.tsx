@@ -7,6 +7,7 @@ import Participate from './pages/participate';
 import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 import HostDashboard from './pages/hostDashboard';
+import ParticipateDashboard from './pages/participateDashboard';
 import firebase from './firebase';
 
 const App: React.FunctionComponent = (): JSX.Element => {
@@ -43,8 +44,15 @@ const App: React.FunctionComponent = (): JSX.Element => {
       />
       <Route
         path="/participate"
+        exact={true}
         render={(props: any): JSX.Element => (
           <Participate {...props} uid={uid} />
+        )}
+      />
+      <Route
+        path="/participate/:id"
+        render={(props: any): JSX.Element => (
+          <ParticipateDashboard {...props} uid={uid} />
         )}
       />
     </>
