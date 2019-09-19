@@ -61,25 +61,14 @@ const Host: React.SFC<any> = (props: any): JSX.Element => {
         vertical={true}
         style={{
           height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <Container text={true}>
-          <Segment>
+          <Segment className="Container">
             <Container>
-              <Link to="/">
-                <div
-                  style={{
-                    position: 'absolute',
-                  }}
-                >
-                  <Icon name="angle left" />
-                  <span>Back</span>
-                </div>
-              </Link>
-              <Header style={{ marginTop: 0 }} textAlign="center" as="h1">
-                Welcome to Kountr
-              </Header>
-              <Divider />
               <Form size="massive">
                 <Form.Field>
                   <label>
@@ -99,12 +88,29 @@ const Host: React.SFC<any> = (props: any): JSX.Element => {
               </Form>
               <Divider hidden={true} />
               <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Button size="huge" onClick={handleSubmit}>
+                <Button color="orange" size="huge" onClick={handleSubmit}>
                   Host {kountrName} Kountr
                 </Button>
               </div>
+              <Divider hidden={true} />
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <Link to="/">
+                  <span>Go Back</span>
+                </Link>
+              </div>
             </Container>
           </Segment>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <a href="https://aminroslan.com" target="_blank">
+              aminroslan.com
+            </a>
+          </div>
         </Container>
       </Segment>
     </>
