@@ -24,7 +24,12 @@ const ParticipateDashboard: React.SFC<any> = (props: any): JSX.Element => {
     KountrCountRef.on(
       'value',
       (snapshot: firebase.database.DataSnapshot): void => {
-        setCount(snapshot.val());
+        if (snapshot.val() === null) {
+          alert('Your host has ended the session! See you again!');
+          props.history.push('/');
+        } else {
+          setCount(snapshot.val());
+        }
       }
     );
 
@@ -63,15 +68,22 @@ const ParticipateDashboard: React.SFC<any> = (props: any): JSX.Element => {
         vertical={true}
         style={{
           height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <Container text={true}>
+          <Header
+            style={{ marginTop: 0, fontWeight: '400' }}
+            className="Hero-title"
+            textAlign="center"
+            as="h1"
+          >
+            Kountr
+          </Header>
           <Segment>
             <Container>
-              <Header style={{ marginTop: 0 }} textAlign="center" as="h1">
-                Welcome to Kountr
-              </Header>
-              <Divider />
               <Grid columns={2}>
                 <Grid.Row>
                   <Grid.Column>
@@ -98,15 +110,26 @@ const ParticipateDashboard: React.SFC<any> = (props: any): JSX.Element => {
                 padding: '5rem',
               }}
             >
-              <Button size="massive" onClick={handleKount}>
+              <Button color="orange" size="massive" onClick={handleKount}>
                 Add Kount
               </Button>
               <Divider hidden={true} />
-              <Button onClick={(): void => props.history.push('/')}>
+              <Button color="red" onClick={(): void => props.history.push('/')}>
                 Leave Session
               </Button>
             </Container>
           </Segment>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <a href="https://aminroslan.com" target="_blank">
+              aminroslan.com
+            </a>
+          </div>
         </Container>
       </Segment>
     </>

@@ -7,24 +7,38 @@ import {
   Grid,
   Card,
 } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 
-const Index = (props: any) => {
+const Index = (props: any): JSX.Element => {
   return (
     <Segment
       vertical={true}
       style={{
         height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <Container text={true}>
-        <Segment>
-          <Container text={true}>
-            <Header textAlign="center" as="h1">
-              Welcome to Kountr
-            </Header>
-            <Divider />
-            <Grid columns={1}>
+        <Header
+          textAlign="center"
+          className="Hero-title"
+          as="h1"
+          style={{
+            fontSize: '5rem',
+            marginBottom: '5rem',
+            fontWeight: 400,
+          }}
+        >
+          Welcome to <span style={{ color: 'white' }}>Kountr</span>
+          <Header.Subheader className="Hero-title-subtitle">
+            Counter as a Service
+          </Header.Subheader>
+        </Header>
+        <Segment className="Index-container">
+          <Container>
+            {/* <Divider /> */}
+            <Grid columns={2} stackable={true}>
               <Grid.Column
                 style={{
                   display: 'flex',
@@ -32,11 +46,14 @@ const Index = (props: any) => {
                   alignItems: 'center',
                 }}
               >
-                <Link to="/host">
-                  <Card centered={true} className={'Index-container-card'}>
-                    <Header as="h2">Host</Header>
-                  </Card>
-                </Link>
+                <Card
+                  fluid={true}
+                  centered={true}
+                  className={'Index-container-card'}
+                  onClick={(): void => props.history.push('/host')}
+                >
+                  <Header as="h2">Host</Header>
+                </Card>
               </Grid.Column>
               <Grid.Column
                 style={{
@@ -45,15 +62,29 @@ const Index = (props: any) => {
                   alignItems: 'center',
                 }}
               >
-                <Link to="/participate">
-                  <Card centered={true} className={'Index-container-card'}>
-                    <Header as="h2">Participate</Header>
-                  </Card>
-                </Link>
+                <Card
+                  fluid={true}
+                  centered={true}
+                  className={'Index-container-card'}
+                  onClick={(): void => props.history.push('/participate')}
+                >
+                  <Header as="h2">Participate</Header>
+                </Card>
               </Grid.Column>
             </Grid>
           </Container>
         </Segment>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <a href="https://aminroslan.com" target="_blank">
+            aminroslan.com
+          </a>
+        </div>
       </Container>
     </Segment>
   );
