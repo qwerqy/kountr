@@ -7,7 +7,7 @@ import {
   Grid,
   Card,
 } from 'semantic-ui-react';
-
+import Logo from '../images/logo.png';
 const Index = (props: any): JSX.Element => {
   return (
     <Segment
@@ -20,6 +20,15 @@ const Index = (props: any): JSX.Element => {
       }}
     >
       <Container text={true}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <img src={Logo} className={'Header-image'} />
+        </div>
         <Header
           textAlign="center"
           className="Hero-title"
